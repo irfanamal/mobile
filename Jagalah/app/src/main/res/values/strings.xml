@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Jagalah!</string>
+
+    <string name="jadwal_label">Jadwal</string>
+    <string name="quran_label">Quran</string>
+    <string name="kiblat_label">Kiblat</string>
+</resources>
