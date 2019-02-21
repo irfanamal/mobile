@@ -20,11 +20,11 @@ import java.io.IOException;
  */
 public class JadwalFragment extends Fragment {
 
-    private String waktu_subuh;
-    private String waktu_dzuhur;
-    private String waktu_ashar;
-    private String waktu_maghrib;
-    private String waktu_isya;
+    private static String waktu_subuh = null;
+    private static String waktu_dzuhur = null;
+    private static String waktu_ashar = null;
+    private static String waktu_maghrib = null;
+    private static String waktu_isya = null;
     private Thread network;
 
     public JadwalFragment() {
@@ -41,23 +41,24 @@ public class JadwalFragment extends Fragment {
         TextView ashar = (TextView)RootView.findViewById(R.id.waktu_ashar);
         TextView maghrib = (TextView)RootView.findViewById(R.id.waktu_maghrib);
         TextView isya = (TextView)RootView.findViewById(R.id.waktu_isya);
-        doInBackground();
-        try {
-            network.join();
-            String subuhStr = subuh.getText().toString() + waktu_subuh;
-            String dzuhurStr = dzuhur.getText().toString() + waktu_dzuhur;
-            String asharStr = ashar.getText().toString() + waktu_ashar;
-            String maghribStr = maghrib.getText().toString() + waktu_maghrib;
-            String isyaStr = isya.getText().toString() + waktu_isya;
-            subuh.setText(subuhStr);
-            dzuhur.setText(dzuhurStr);
-            ashar.setText(asharStr);
-            maghrib.setText(maghribStr);
-            isya.setText(isyaStr);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        if (waktu_subuh == null) {
+            doInBackground();
+            try {
+                network.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
-
+        String subuhStr = subuh.getText().toString() + waktu_subuh;
+        String dzuhurStr = dzuhur.getText().toString() + waktu_dzuhur;
+        String asharStr = ashar.getText().toString() + waktu_ashar;
+        String maghribStr = maghrib.getText().toString() + waktu_maghrib;
+        String isyaStr = isya.getText().toString() + waktu_isya;
+        subuh.setText(subuhStr);
+        dzuhur.setText(dzuhurStr);
+        ashar.setText(asharStr);
+        maghrib.setText(maghribStr);
+        isya.setText(isyaStr);
         // Inflate the layout for this fragment
         return RootView;
     }
