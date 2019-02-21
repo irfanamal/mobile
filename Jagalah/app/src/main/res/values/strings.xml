@@ -4,4 +4,10 @@
     <string name="jadwal_label">Jadwal</string>
     <string name="quran_label">Quran</string>
     <string name="kiblat_label">Kiblat</string>
+    <string name="jadwal_sholat">Jadwal Sholat</string>
+    <string name="subuh">Subuh\t\t:</string>
+    <string name="dzuhur">Dzuhur\t\t:</string>
+    <string name="ashar">Ashar\t\t\t:</string>
+    <string name="maghrib">Maghrib\t:</string>
+    <string name="isya">Isya\t\t\t\t:</string>
 </resources>

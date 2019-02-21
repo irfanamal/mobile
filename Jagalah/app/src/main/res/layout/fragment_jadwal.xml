@@ -1,8 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".JadwalFragment">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/jadwal_sholat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/jadwal_sholat"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/waktu_subuh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/subuh"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/jadwal_sholat"/>
+
+        <TextView
+            android:id="@+id/waktu_dzuhur"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dzuhur"
+            app:layout_constraintTop_toBottomOf="@+id/waktu_subuh"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/waktu_ashar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ashar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/waktu_dzuhur"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/waktu_maghrib"
+            android:text="@string/maghrib"
+            app:layout_constraintTop_toBottomOf="@+id/waktu_ashar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/waktu_isya"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/isya"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/waktu_maghrib"/>
+    </android.support.constraint.ConstraintLayout>
+
+
 
 </FrameLayout>
