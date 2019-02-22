@@ -1,6 +1,9 @@
 package com.bebas.jagalah;
 
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -36,29 +39,58 @@ public class JadwalFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View RootView = inflater.inflate(R.layout.fragment_jadwal, container, false);
+        TextView header = (TextView)RootView.findViewById(R.id.jadwal_sholat);
         TextView subuh = (TextView)RootView.findViewById(R.id.waktu_subuh);
         TextView dzuhur = (TextView)RootView.findViewById(R.id.waktu_dzuhur);
         TextView ashar = (TextView)RootView.findViewById(R.id.waktu_ashar);
         TextView maghrib = (TextView)RootView.findViewById(R.id.waktu_maghrib);
         TextView isya = (TextView)RootView.findViewById(R.id.waktu_isya);
-        if (waktu_subuh == null) {
-            doInBackground();
-            try {
-                network.join();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+
+        ConnectivityManager cm =
+                (ConnectivityManager)getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        boolean connected = activeNetwork != null &&
+                activeNetwork.isConnected();
+
+        if (connected) {
+            if (waktu_subuh == null) {
+                doInBackground();
+                try {
+                    network.join();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            String subuhStr = getString(R.string.subuh) + waktu_subuh;
+            String dzuhurStr = getString(R.string.dzuhur) + waktu_dzuhur;
+            String asharStr = getString(R.string.ashar) + waktu_ashar;
+            String maghribStr = getString(R.string.maghrib) + waktu_maghrib;
+            String isyaStr = getString(R.string.isya) + waktu_isya;
+            header.setText(getString(R.string.jadwal_sholat));
+            subuh.setText(subuhStr);
+            dzuhur.setText(dzuhurStr);
+            ashar.setText(asharStr);
+            maghrib.setText(maghribStr);
+            isya.setText(isyaStr);
+        } else {
+            if (waktu_subuh == null) {
+                header.setText("No internet connection");
+            } else {
+                String subuhStr = getString(R.string.subuh) + waktu_subuh;
+                String dzuhurStr = getString(R.string.dzuhur) + waktu_dzuhur;
+                String asharStr = getString(R.string.ashar) + waktu_ashar;
+                String maghribStr = getString(R.string.maghrib) + waktu_maghrib;
+                String isyaStr = getString(R.string.isya) + waktu_isya;
+                header.setText(getString(R.string.jadwal_sholat));
+                subuh.setText(subuhStr);
+                dzuhur.setText(dzuhurStr);
+                ashar.setText(asharStr);
+                maghrib.setText(maghribStr);
+                isya.setText(isyaStr);
             }
         }
-        String subuhStr = subuh.getText().toString() + waktu_subuh;
-        String dzuhurStr = dzuhur.getText().toString() + waktu_dzuhur;
-        String asharStr = ashar.getText().toString() + waktu_ashar;
-        String maghribStr = maghrib.getText().toString() + waktu_maghrib;
-        String isyaStr = isya.getText().toString() + waktu_isya;
-        subuh.setText(subuhStr);
-        dzuhur.setText(dzuhurStr);
-        ashar.setText(asharStr);
-        maghrib.setText(maghribStr);
-        isya.setText(isyaStr);
+
         // Inflate the layout for this fragment
         return RootView;
     }

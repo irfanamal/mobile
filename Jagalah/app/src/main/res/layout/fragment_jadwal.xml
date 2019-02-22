@@ -14,7 +14,7 @@
             android:id="@+id/jadwal_sholat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/jadwal_sholat"
+
             android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -24,7 +24,7 @@
             android:id="@+id/waktu_subuh"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/subuh"
+
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/jadwal_sholat"/>
@@ -33,7 +33,7 @@
             android:id="@+id/waktu_dzuhur"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/dzuhur"
+
             app:layout_constraintTop_toBottomOf="@+id/waktu_subuh"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
@@ -42,7 +42,7 @@
             android:id="@+id/waktu_ashar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/ashar"
+
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/waktu_dzuhur"/>
@@ -51,7 +51,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/waktu_maghrib"
-            android:text="@string/maghrib"
+
             app:layout_constraintTop_toBottomOf="@+id/waktu_ashar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
@@ -60,7 +60,7 @@
             android:id="@+id/waktu_isya"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/isya"
+
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/waktu_maghrib"/>
