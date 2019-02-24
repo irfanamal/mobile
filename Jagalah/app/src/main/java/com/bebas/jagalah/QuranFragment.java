@@ -43,6 +43,13 @@ public class QuranFragment extends Fragment implements AdapterView.OnItemSelecte
         dropdown.setOnItemSelectedListener(this);
         dropdown.setAdapter(adapter);
 
+        doInBackground3();
+        try {
+            network.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         List<String> list = new ArrayList<String>();
         for (int i=1; i<=7; i++) {
             list.add(Integer.toString(i));
@@ -123,6 +130,22 @@ public class QuranFragment extends Fragment implements AdapterView.OnItemSelecte
                 FatimahAPI api = new FatimahAPI();
                 try {
                     isi_ayat = api.getAyat(numbSurat, numbAyat);
+                } catch (IOException e) {
+                    Log.d("IOException", "IOException");
+                } catch (JSONException e) {
+                    Log.d("JSONException", "JSONException");
+                }
+            }
+        };
+        network.start();
+    }
+
+    public void doInBackground3() {
+        network = new Thread() {
+            public void run() {
+                FatimahAPI api = new FatimahAPI();
+                try {
+                    daftar_surat = api.getAllSurah();
                 } catch (IOException e) {
                     Log.d("IOException", "IOException");
                 } catch (JSONException e) {

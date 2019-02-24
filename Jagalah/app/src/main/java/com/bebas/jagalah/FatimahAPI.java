@@ -77,6 +77,40 @@ public class FatimahAPI {
         return jam;
     }
 
+    public String[] getAllSurah() throws IOException, JSONException {
+        String link = "https://api.banghasan.com/quran/format/json/surat";
+        URL url = new URL(link);
+        HttpURLConnection conn = null;
+
+        conn = (HttpURLConnection) url.openConnection();
+        conn.setRequestMethod("GET");
+        conn.addRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:25.0) Gecko/20100101 Firefox/25.0");
+        conn.connect();
+
+        if (conn.getResponseCode() == 200) {
+            StringBuilder response = new StringBuilder();
+            try (BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()))) {
+                String inputLine;
+                while ((inputLine = in.readLine()) != null) {
+                    response.append(inputLine);
+                }
+            }
+
+            String[] temp = new String[114];
+
+            JSONObject myresponse = new JSONObject(response.toString());
+
+            for (int i=0; i<114; i++) {
+                String hasil = myresponse.getJSONArray("hasil").getJSONObject(i).getString("nama");
+                temp[i] = Integer.toString(i+1) + ". " + hasil;
+            }
+
+            return temp;
+        }
+
+        return null;
+    }
+
     public String getSurah(int num) throws IOException, JSONException {
         String link = "https://api.banghasan.com/quran/format/json/surat/" + Integer.toString(num);
         URL url = new URL(link);
