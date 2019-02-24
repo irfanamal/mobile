@@ -1,1 +1,55 @@
-{"installed":{"client_id":"403140445479-nmd4k7lppg046qesbo6f7h5lh11blpl8.apps.googleusercontent.com","project_id":"jagalah-mobile-1551001815429","auth_uri":"https://accounts.google.com/o/oauth2/auth","token_uri":"https://oauth2.googleapis.com/token","auth_provider_x509_cert_url":"https://www.googleapis.com/oauth2/v1/certs","redirect_uris":["urn:ietf:wg:oauth:2.0:oob","http://localhost"]}}
+{
+  "project_info": {
+    "project_number": "403140445479",
+    "firebase_url": "https://jagalah-mobile-1551001815429.firebaseio.com",
+    "project_id": "jagalah-mobile-1551001815429",
+    "storage_bucket": "jagalah-mobile-1551001815429.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:403140445479:android:f95da545a12a341b",
+        "android_client_info": {
+          "package_name": "com.bebas.jagalah"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "403140445479-nmd4k7lppg046qesbo6f7h5lh11blpl8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bebas.jagalah",
+            "certificate_hash": "9c81ecc65ff66eb2b03c3a50e7f9933b8f457f6f"
+          }
+        },
+        {
+          "client_id": "403140445479-so32f03om7r09nh7up3pu5fhruinatfv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAsXntjXNpqI188u9aXPBpbizMrOtZA_y0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "403140445479-so32f03om7r09nh7up3pu5fhruinatfv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
