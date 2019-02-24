@@ -1,6 +1,7 @@
 package com.bebas.jagalah;
 
 import android.support.v4.util.Pair;
+import android.util.Log;
 
 import org.json.JSONException;
 import org.json.JSONObject;
