@@ -5,4 +5,22 @@
     android:layout_height="match_parent"
     tools:context=".KiblatFragment">
 
+    <RelativeLayout
+        android:id="@+id/KiblatFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="16dp"
+        android:paddingLeft="16dp"
+        android:paddingBottom="16dp"
+        android:paddingRight="16dp"        >
+
+    <ImageView
+        android:id="@+id/compass"
+        android:layout_centerInParent="true"
+        android:src="@drawable/compass"
+        android:layout_width="300dp"
+        android:layout_height="300dp" />
+
+    </RelativeLayout>
+
 </FrameLayout>
