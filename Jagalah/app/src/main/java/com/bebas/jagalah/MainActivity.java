@@ -1,6 +1,7 @@
 package com.bebas.jagalah;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -16,10 +17,23 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.SignInButton;
+import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 
 import java.io.IOException;
 import java.util.List;
@@ -29,7 +43,9 @@ import static com.google.android.gms.location.LocationServices.getFusedLocationP
 
 public class MainActivity extends AppCompatActivity {
 
-    //public static String cityName = null;
+    public static final String GOOGLE_ACCOUNT = "google_account";
+
+    private TextView profileName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +86,13 @@ public class MainActivity extends AppCompatActivity {
            @Override
            public void onTabReselected(TabLayout.Tab tab) {
            }
-       });
+        });
+
+        profileName = findViewById(R.id.profile_text);
+        GoogleSignInAccount googleSignInAccount = getIntent().getParcelableExtra(GOOGLE_ACCOUNT);
+        String text = "Halo, " + googleSignInAccount.getGivenName();
+        profileName.setText(text);
+
     }
 
 //    public void getLastLocation() {
