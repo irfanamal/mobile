@@ -24,7 +24,7 @@ public class FatimahAPI {
 //    private JSONObject jadwal;
 
     public JSONObject getResult(URL url) throws IOException, JSONException {
-        HttpURLConnection connection = (HttpURLConnection)url.openConnection();
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setRequestMethod("GET");
         connection.addRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:25.0) Gecko/20100101 Firefox/25.0");
         BufferedReader result = new BufferedReader(new InputStreamReader(connection.getInputStream()));
@@ -75,5 +75,62 @@ public class FatimahAPI {
                 break;
         }
         return jam;
+    }
+
+    public String getSurah(int num) throws IOException, JSONException {
+        String link = "https://api.banghasan.com/quran/format/json/surat/" + Integer.toString(num);
+        URL url = new URL(link);
+        HttpURLConnection conn = null;
+
+        conn = (HttpURLConnection) url.openConnection();
+        conn.setRequestMethod("GET");
+        conn.addRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:25.0) Gecko/20100101 Firefox/25.0");
+        conn.connect();
+
+        if (conn.getResponseCode() == 200) {
+            StringBuilder response = new StringBuilder();
+            try (BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()))) {
+                String inputLine;
+                while ((inputLine = in.readLine()) != null) {
+                    response.append(inputLine);
+                }
+            }
+
+            JSONObject myresponse = new JSONObject(response.toString());
+            JSONObject hasil = myresponse.getJSONArray("hasil").getJSONObject(0);
+
+            return hasil.getString("ayat");
+        }
+
+        return null;
+    }
+
+    public String getAyat(int nSurat, int nAyat) throws IOException, JSONException {
+        String link = "https://api.banghasan.com/quran/format/json/surat/" + Integer.toString(nSurat) + "/ayat/" + Integer.toString(nAyat) + "/bahasa/ar";
+
+        URL url = new URL(link);
+        HttpURLConnection conn = null;
+
+        conn = (HttpURLConnection) url.openConnection();
+        conn.setRequestMethod("GET");
+        conn.addRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:25.0) Gecko/20100101 Firefox/25.0");
+        conn.connect();
+
+        if (conn.getResponseCode() == 200) {
+            StringBuilder response = new StringBuilder();
+            try (BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()))) {
+                String inputLine;
+                while ((inputLine = in.readLine()) != null) {
+                    response.append(inputLine);
+                }
+            }
+
+            JSONObject myresponse = new JSONObject(response.toString());
+            JSONObject hasil = myresponse.getJSONObject("ayat").getJSONObject("data").getJSONArray("ar").getJSONObject(0);
+
+            return hasil.getString("teks");
+        }
+
+        return null;
     }
 }
