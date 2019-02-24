@@ -1,8 +1,8 @@
 package com.bebas.jagalah;
 
 import android.support.v4.util.Pair;
-import android.util.Log;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -24,7 +24,7 @@ public class FatimahAPI {
 //    private JSONObject jadwal;
 
     public JSONObject getResult(URL url) throws IOException, JSONException {
-        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+        HttpURLConnection connection = (HttpURLConnection)url.openConnection();
         connection.setRequestMethod("GET");
         connection.addRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:25.0) Gecko/20100101 Firefox/25.0");
         BufferedReader result = new BufferedReader(new InputStreamReader(connection.getInputStream()));
@@ -140,8 +140,7 @@ public class FatimahAPI {
     }
 
     public String getAyat(int nSurat, int nAyat) throws IOException, JSONException {
-        String link = "https://api.banghasan.com/quran/format/json/surat/" + Integer.toString(nSurat) + "/ayat/" + Integer.toString(nAyat) + "/bahasa/ar";
-
+        String link = "https://api.banghasan.com/quran/format/json/surat/" + Integer.toString(nSurat) + "/ayat/" + Integer.toString(nAyat) + "/bahasa/ar";;
         URL url = new URL(link);
         HttpURLConnection conn = null;
 

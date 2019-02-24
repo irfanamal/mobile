@@ -1,5 +1,6 @@
 package com.bebas.jagalah;
 
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -10,7 +11,10 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
+
 import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -39,16 +43,16 @@ public class QuranFragment extends Fragment implements AdapterView.OnItemSelecte
 
         Spinner dropdown = (Spinner) RootView.findViewById(R.id.daftar_surah);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity().getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, daftar_surat);
-        dropdown.setOnItemSelectedListener(this);
-        dropdown.setAdapter(adapter);
-
         doInBackground3();
         try {
             network.join();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity().getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, daftar_surat);
+        dropdown.setOnItemSelectedListener(this);
+        dropdown.setAdapter(adapter);
 
         List<String> list = new ArrayList<String>();
         for (int i=1; i<=7; i++) {
@@ -155,5 +159,4 @@ public class QuranFragment extends Fragment implements AdapterView.OnItemSelecte
         };
         network.start();
     }
-
 }

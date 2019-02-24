@@ -5,43 +5,44 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".QuranFragment">
+
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <Spinner
+            android:id="@+id/daftar_surah"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/daftar_surah"
+            android:layout_marginTop="8dp"
             android:background="@android:drawable/btn_dropdown"
             android:spinnerMode="dropdown"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="8dp"
             app:layout_constraintHorizontal_bias="0.048"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Spinner
+            android:id="@+id/no_ayat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/no_ayat"
+            android:layout_marginTop="8dp"
             android:background="@android:drawable/btn_dropdown"
             android:spinnerMode="dropdown"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="8dp"
             app:layout_constraintHorizontal_bias="0.951"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/isi_ayat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/no_ayat" />
+            app:layout_constraintTop_toBottomOf="@+id/no_ayat"/>
+
     </android.support.constraint.ConstraintLayout>
 
 </FrameLayout>
